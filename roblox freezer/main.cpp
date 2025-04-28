@@ -38,18 +38,14 @@ void ntsuspend() {
 }
 
 void toggle() {
-	if (!id) {
-		HWND hwnd = FindWindowA(NULL, "Roblox");
-		GetWindowThreadProcessId(hwnd, &id);
-	}
-
 	suspend();
-
 	freeze = !freeze;
 }
 
 int main() {
 	SetConsoleTitleA("Roblox freezer");
+	HWND hwnd = FindWindowA(NULL, "Roblox");
+	GetWindowThreadProcessId(hwnd, &id);
 	std::cout << "[+] Please put your keybind here: ";
 	std::string inp;
 	std::cin >> inp;
@@ -100,6 +96,6 @@ int main() {
 			}
 		}
 
-		Sleep(50);
+		Sleep(1);
 	}
 }
